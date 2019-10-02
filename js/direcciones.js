@@ -1,8 +1,7 @@
 direccionesModulo = (function () {
-  var servicioDirecciones // Servicio que calcula las direcciones
-  var mostradorDirecciones // Servicio muestra las direcciones
+  var servicioDirecciones 
+  var mostradorDirecciones
 
-    // Calcula las rutas cuando se cambian los lugares de desde, hasta o algun punto intermedio
   function calcularRutasConClic () {
     document.getElementById('comoIr').addEventListener('change', function () {
       direccionesModulo.calcularYMostrarRutas()
@@ -22,7 +21,6 @@ direccionesModulo = (function () {
     }
   }
 
-    // Agrega la dirección en las lista de Lugares Intermedios en caso de que no estén
   function agregarDireccionEnLista (direccion, coord) {
     var lugaresIntermedios = document.getElementById('puntosIntermedios')
 
@@ -40,7 +38,6 @@ direccionesModulo = (function () {
     }
   }
 
-    // Agrega la dirección en las listas de puntos intermedios y lo muestra con el street view
   function agregarDireccionYMostrarEnMapa (direccion, ubicacion) {
     that = this
     var ubicacionTexto = ubicacion.lat() + ',' + ubicacion.lng()
@@ -57,24 +54,20 @@ direccionesModulo = (function () {
     mapa.setCenter(ubicacion)
   }
 
-    // Inicializo las variables que muestra el panel y el que calcula las rutas//
   function inicializar () {
     calcularRutasConClic()
-        // Agrega la direccion cuando se presioná enter en el campo agregar
     $('#agregar').keypress(function (e) {
       if (e.keyCode == 13) {
         var direccion = document.getElementById('agregar').value
         geocodificadorModulo.usaDireccion(direccion, direccionesModulo.agregarDireccion)
       }
     })
-        // Calcula las rutas cuando se presioná enter en el campo desde y hay un valor disitnto a vacío en 'hasta'
     $('#desde').keypress(function (e) {
       if (e.keyCode == 13 && document.getElementById('hasta').value != '') {
         direccionesModulo.calcularYMostrarRutas()
       }
     })
 
-        // Calcula las rutas cuando se presioná enter en el campo hasta y hay un valor disitnto a vacío en 'desde'
     $('#hasta').keypress(function (e) {
       if (e.keyCode == 13 && document.getElementById('desde').value != '') {
         direccionesModulo.calcularYMostrarRutas()
@@ -89,13 +82,7 @@ direccionesModulo = (function () {
     })
   }
 
-    // Calcula la ruta entre los puntos Desde y Hasta con los puntosIntermedios
-    // dependiendo de la formaDeIr que puede ser Caminando, Auto o Bus/Subterraneo/Tren
   function calcularYMostrarRutas () {
-
-        /* Completar la función calcularYMostrarRutas , que dependiendo de la forma en que el
-         usuario quiere ir de un camino al otro, calcula la ruta entre esas dos posiciones
-         y luego muestra la ruta. */
 
     var waypoints = [];
     document.getElementById("puntosIntermedios").childNodes.forEach(function(node) {

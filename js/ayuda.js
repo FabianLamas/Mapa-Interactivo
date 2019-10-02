@@ -1,4 +1,3 @@
-// Muestra y oculta el panorama de Street View cuando se hace clic el boton con id 'pano'
 function mostrarOcultarPano () {
   var x = document.getElementById('pano')
   if (getComputedStyle(x, null).visibility === 'hidden') {
@@ -8,7 +7,6 @@ function mostrarOcultarPano () {
   }
 }
 
-// Mueve las opción para arriba para ordenar los puntos intermedios
 $(document).ready(function () {
   $('.up').click(function () {
     var $op = $('#puntosIntermedios option:selected')
@@ -18,7 +16,6 @@ $(document).ready(function () {
   })
 })
 
-// Mueve la opción para abajo para ordenar los puntos intermedios
 $(document).ready(function () {
   $('.down').click(function () {
     var $op = $('#puntosIntermedios option:selected')
@@ -28,12 +25,10 @@ $(document).ready(function () {
   })
 })
 
-// muestra el valor indicado por el selector radioS
 function mostrarValor (n) {
   document.querySelector('#radioS').value = n + ' mts'
 }
 
-// los tipos de lugares de Google Maps
 var tiposDeLugares = [{
   value: 'accounting',
   text: 'Contabilidad'
@@ -324,7 +319,6 @@ var tiposDeLugares = [{
   text: 'Zoo'
 }]
 
-// Agregar en la lista de tipos de lugares todos los tipos de lugares posibles de Google Maps
 $.each(tiposDeLugares, function (i, item) {
   $('#tipoDeLugar').append($('<option>', {
     value: item.value,
